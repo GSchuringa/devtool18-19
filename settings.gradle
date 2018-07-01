@@ -1,0 +1,2 @@
+rootProject.name = 'gradle-skeleton-app'
+include 'src'

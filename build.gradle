@@ -1,0 +1,49 @@
+apply plugin: 'jacoco'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
+apply plugin: 'java'
+
+group 'gradle-skeleton'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+        }
+    }
+    test {
+        java{
+            srcDirs 'src/test'
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.1"
+    reportsDir = file("$buildDir/jacocoReportDir")
+}
+
+findbugs{
+    sourceSets = [sourceSets.main]
+    ignoreFailures = true
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+//checkstyle {
+//    toolVersion "8.8"
+//}
