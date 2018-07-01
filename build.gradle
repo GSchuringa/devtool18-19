@@ -1,7 +1,7 @@
+apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
-apply plugin: 'java'
 
 group 'gradle-skeleton'
 version '1.0'
@@ -31,7 +31,7 @@ sourceSets {
 
 jacoco {
     toolVersion = "0.8.1"
-    reportsDir = file("$buildDir/jacocoReportDir")
+    reportsDir = file("$buildDir/reports/jacoco")
 }
 
 findbugs{
@@ -44,6 +44,4 @@ tasks.withType(FindBugs) {
         html.enabled = true
     }
 }
-//checkstyle {
-//    toolVersion "8.8"
-//}
+
